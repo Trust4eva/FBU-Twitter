@@ -7,6 +7,7 @@
 //
 
 #import "ComposingViewController.h"
+#import "APIManager.h"
 
 @interface ComposingViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -23,9 +24,24 @@
     // Do any additional setup after loading the view.
 }
 
+
+
+- (IBAction)PostTweet:(id)sender {
+    [[APIManager shared] postStatusWithText:self.tweetView.text completion:^(Tweet *tweet, NSError *error) {
+        
+        if(tweet){
+            [self dismissViewControllerAnimated:true completion:nil];
+            NSLog(@"Tweet successfully posted");
+        } else {
+            NSLog(@"%@",error.localizedDescription);
+        }
+        
+    }];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)backButton:(id)sender {

@@ -76,7 +76,8 @@ static NSString * const consumerSecret = @"eVe3iEekYIXPdMmqLHb5fFMpQdzGUYNrXz3y4
    }];
 }
 
-- (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
+- (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *tweet, NSError *error))completion{
+    
     NSString *urlString = @"1.1/statuses/update.json";
     NSDictionary *parameters = @{@"status": text};
     
