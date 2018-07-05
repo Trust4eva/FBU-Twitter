@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+
+
+@protocol ComposingViewControllerDelegate
+
+- (void)didTweet:(Tweet *)tweet;
+
+
+@end
 
 @interface ComposingViewController : UIViewController
+
+@property (nonatomic, weak) id<ComposingViewControllerDelegate> delegate;
+
+
 
 @end

@@ -21,6 +21,7 @@
 		CC7B762820EAD5F5003EB8BB /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7B762720EAD5F5003EB8BB /* Tweet.m */; };
 		CC7B762B20EAE77F003EB8BB /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7B762A20EAE77F003EB8BB /* TweetCell.m */; };
 		CC7B762E20EC2C74003EB8BB /* ComposingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7B762D20EC2C74003EB8BB /* ComposingViewController.m */; };
+		CCA3A34E20EED3AB0005CA6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA3A34D20EED3AB0005CA6C /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		CC7B762A20EAE77F003EB8BB /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		CC7B762C20EC2C74003EB8BB /* ComposingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposingViewController.h; sourceTree = "<group>"; };
 		CC7B762D20EC2C74003EB8BB /* ComposingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposingViewController.m; sourceTree = "<group>"; };
+		CCA3A34C20EED3AB0005CA6C /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		CCA3A34D20EED3AB0005CA6C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				CC7B762C20EC2C74003EB8BB /* ComposingViewController.h */,
 				CC7B762D20EC2C74003EB8BB /* ComposingViewController.m */,
+				CCA3A34C20EED3AB0005CA6C /* DetailViewController.h */,
+				CCA3A34D20EED3AB0005CA6C /* DetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				CC7B762820EAD5F5003EB8BB /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
+				CCA3A34E20EED3AB0005CA6C /* DetailViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,

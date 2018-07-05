@@ -10,8 +10,11 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "TweetCell.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "ComposingViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource,ComposingViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong,nonatomic) NSMutableArray *Tweets;
 @property (strong,nonatomic) Tweet *moreTweets;
@@ -32,6 +35,8 @@
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
     self.myTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
     
     [self RefreshTimeline];
 }
@@ -65,17 +70,29 @@
     return self.Tweets.count;
 }
 
+- (void)didTweet:(Tweet *)tweet {
+    [self RefreshTimeline];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)LogOut:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [[APIManager shared] logout];
 }
-*/
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposingViewController *composeController = (ComposingViewController*)navigationController.topViewController;
+    composeController.delegate = self;
+}
+
+
+
+
 @end

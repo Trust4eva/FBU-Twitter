@@ -16,5 +16,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeStamp;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (strong,nonatomic) Tweet *tweets;
+@property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *favLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+
 
 @end
