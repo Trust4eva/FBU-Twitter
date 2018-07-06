@@ -22,7 +22,6 @@
     self.timeStamp.text = tweets.createdAtString;
     self.tweetText.text = tweets.text;
     
-    
     self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweets.retweetCount];
     if(tweets.retweetCount < 1){
         self.retweetLabel.text = @"";
@@ -49,6 +48,7 @@
     self.profilePic.layer.cornerRadius = self.profilePic.frame.size.height/2;
     self.profilePic.layer.masksToBounds = YES;
 }
+
 
 - (IBAction)retweetButton:(id)sender {
     if(self.tweets.retweeted == NO) {

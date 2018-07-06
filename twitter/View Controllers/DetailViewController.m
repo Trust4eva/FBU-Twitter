@@ -67,23 +67,20 @@
 }
 
 -(void)updateRTorFavLabel {
-    if(_tweets.retweetCount < 1){
-        self.RTCountLabel.text = @"";
-    }
-    if(_tweets.retweetCount > 1){
-        self.RTLabel.text = @"Retweets";
-    } else {
+    if(_tweets.retweetCount == 1){
+        self.RTCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.retweetCount];
         self.RTLabel.text = @"Retweet";
-    }
-    
-    if (_tweets.favoriteCount < 1){
-        self.favCountLabel.text = @"";
-    }
-    
-    if (_tweets.favoriteCount > 1){
-        self.favLabel.text = @"Likes";
     } else {
+        self.RTCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.retweetCount];
+        self.RTLabel.text = @"Retweets";
+    }
+    
+    if (_tweets.favoriteCount == 1){
         self.favLabel.text = @"Like";
+         self.favCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.favoriteCount];
+    } else {
+        self.favLabel.text = @"Likes";
+        self.favCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.favorited];
     }
 }
 
