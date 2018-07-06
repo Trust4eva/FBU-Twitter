@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "ComposingViewController.h"
+#import "DetailViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource,ComposingViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -87,10 +88,27 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposingViewController *composeController = (ComposingViewController*)navigationController.topViewController;
-    composeController.delegate = self;
+    if([segue.identifier isEqualToString:@"detailSegue"]){
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.myTableView indexPathForCell:cell];
+        Tweet *tweets = self.Tweets[indexPath.row];
+        
+        DetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.tweets = tweets;
+        [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposingViewController *composeController = (ComposingViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
 }
+    
+    
+    
+    
+    
+
+
 
 
 
