@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UITextView *tweetView;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (weak, nonatomic) IBOutlet UILabel *characterLabel;
 
 @end
 
@@ -22,7 +23,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tweetView.delegate = self;
+}
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    // Set the max character limit
+    int characterLimit = 140;
+    
+    // Construct what the new text would be if we allowed the user's latest edit
+    NSString *newText = [self.tweetView.text stringByReplacingCharactersInRange:range withString:text];
+    
+    // TODO: Update Character Count Label
+    self.characterLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(140 -newText.length)];
+    
+    // The new text should be allowed? True/False
+    return newText.length < characterLimit;
+    }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    self.tweetView = textView;
+    self.tweetView.text = @"";
 }
 
 - (IBAction)PostTweet:(id)sender {
