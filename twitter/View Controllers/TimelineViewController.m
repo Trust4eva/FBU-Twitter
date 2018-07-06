@@ -60,10 +60,6 @@
     Tweet* tweet = self.Tweets[indexPath.row];
     
     [cell setTweets:tweet];
-    
-    cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.height/2;
-    cell.profilePic.layer.masksToBounds = YES;
-    
     return cell;
 }
 

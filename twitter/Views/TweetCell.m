@@ -46,6 +46,8 @@
     }
     
     [self.profilePic setImageWithURL:tweets.user.profilePicURL];
+    self.profilePic.layer.cornerRadius = self.profilePic.frame.size.height/2;
+    self.profilePic.layer.masksToBounds = YES;
 }
 
 - (IBAction)retweetButton:(id)sender {
