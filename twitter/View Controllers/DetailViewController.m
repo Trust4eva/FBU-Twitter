@@ -80,7 +80,7 @@
          self.favCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.favoriteCount];
     } else {
         self.favLabel.text = @"Likes";
-        self.favCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.favorited];
+        self.favCountLabel.text = [NSString stringWithFormat:@"%d", _tweets.favoriteCount];
     }
 }
 
