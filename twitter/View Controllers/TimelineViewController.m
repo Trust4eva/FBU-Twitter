@@ -55,6 +55,19 @@
     }];
 }
 
+- (IBAction)replyButton:(id)sender {
+    
+    NSString *title = @"Sorry!";
+    NSString *message = @"THIS BUTTON IS JUST FOR LOOKS. IT DOESN'T DO ANYTHING!";
+    NSString *text = @"I GOT IT!";
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *button = [UIAlertAction actionWithTitle:text style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:button];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet* tweet = self.Tweets[indexPath.row];

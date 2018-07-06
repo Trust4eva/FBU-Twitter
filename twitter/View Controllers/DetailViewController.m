@@ -42,25 +42,10 @@
     self.tweetText.text = tweets.text;
     
     self.RTCountLabel.text = [NSString stringWithFormat:@"%d", tweets.retweetCount];
-    if(tweets.retweetCount < 1){
-        self.RTCountLabel.text = @"";
-    }
-    if(tweets.retweetCount > 1){
-        self.RTLabel.text = @"Retweets";
-    } else {
-        self.RTLabel.text = @"Retweet";
-    }
+    [self updateRTorFavLabel];
     
     self.favCountLabel.text = [NSString stringWithFormat:@"%d", tweets.favoriteCount];
-    if (tweets.favoriteCount < 1){
-        self.favCountLabel.text = @"";
-    }
-    
-    if (tweets.favoriteCount > 2){
-        self.favLabel.text = @"Likes";
-    } else {
-        self.favLabel.text = @"Like";
-    }
+    [self updateRTorFavLabel];
     
     if (tweets.retweeted == YES) {
         self.RTButton.selected = YES;
@@ -81,6 +66,27 @@
     
 }
 
+-(void)updateRTorFavLabel {
+    if(_tweets.retweetCount < 1){
+        self.RTCountLabel.text = @"";
+    }
+    if(_tweets.retweetCount > 1){
+        self.RTLabel.text = @"Retweets";
+    } else {
+        self.RTLabel.text = @"Retweet";
+    }
+    
+    if (_tweets.favoriteCount < 1){
+        self.favCountLabel.text = @"";
+    }
+    
+    if (_tweets.favoriteCount > 1){
+        self.favLabel.text = @"Likes";
+    } else {
+        self.favLabel.text = @"Like";
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -98,7 +104,8 @@
                 self.tweets.retweeted = YES;
                 self.tweets.retweetCount += 1;
                 self.RTButton.selected = YES;
-                self.RTLabel.text = [NSString stringWithFormat:@"%d", self.tweets.retweetCount];
+                self.RTCountLabel.text = [NSString stringWithFormat:@"%d", self.tweets.retweetCount];
+                [self updateRTorFavLabel];
             }
         }];
     } else {
@@ -112,10 +119,12 @@
                 self.tweets.retweeted = NO;
                 self.tweets.retweetCount -= 1;
                 self.RTButton.selected = NO;
-                self.RTLabel.text = [NSString stringWithFormat:@"%d", self.tweets.retweetCount];
+                self.RTCountLabel.text = [NSString stringWithFormat:@"%d", self.tweets.retweetCount];
+                [self updateRTorFavLabel];
             }
         }];
     }
+    [self updateRTorFavLabel];
 }
 
 - (IBAction)pressedFav:(id)sender {
@@ -130,7 +139,8 @@
                 self.tweets.favorited = NO;
                 self.tweets.favoriteCount -= 1;
                 self.FavButton.selected = NO;
-                self.favLabel.text = [NSString stringWithFormat:@"%d", self.tweets.favoriteCount];
+                self.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweets.favoriteCount];
+                [self updateRTorFavLabel];
             }
         }];
         
@@ -145,11 +155,26 @@
                 self.tweets.favorited = YES;
                 self.tweets.favoriteCount += 1;
                 self.FavButton.selected = YES;
-                self.favLabel.text = [NSString stringWithFormat:@"%d", self.tweets.favoriteCount];
+                self.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweets.favoriteCount];
+                [self updateRTorFavLabel];
             }
         }];
     }
 }
+
+- (IBAction)replyButton:(id)sender {
+    
+    NSString *title = @"Sorry!";
+    NSString *message = @"THIS BUTTON IS JUST FOR LOOKS. IT DOESN'T DO ANYTHING!";
+    NSString *text = @"I GOT IT!";
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *button = [UIAlertAction actionWithTitle:text style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:button];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 
 
