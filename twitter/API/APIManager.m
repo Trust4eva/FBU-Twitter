@@ -9,6 +9,7 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "ComposingViewController.h"
+#import "User.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 static NSString * const consumerKey = @"DBLdbhllaNroFbeuWnG3h1Hc4";
@@ -138,6 +139,18 @@ static NSString * const consumerSecret = @"eVe3iEekYIXPdMmqLHb5fFMpQdzGUYNrXz3y4
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)getProfileData:(void (^)(User *user, NSError *error))completion{
+    
+    NSString *urlString = @"1.1/account/verify_credentials.json";
+    [self GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable theUser) {
+        User *myUser = [[User alloc] initWithDictionary:theUser];
+        completion(myUser,nil);
+     
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];

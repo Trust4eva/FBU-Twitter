@@ -13,9 +13,12 @@
 @property (strong,nonatomic) NSString *screenName;
 @property (strong,nonatomic) NSString *AtName;
 @property (strong,nonatomic) NSURL *profilePicURL;
+@property (strong,nonatomic) NSURL *backdropURL;
+@property (strong,nonatomic) NSNumber *followersCount;
+@property (strong,nonatomic) NSNumber *followingCount;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
++(NSMutableArray *)UserWithArray:(NSArray *)dictionaries;
 
 
 @end

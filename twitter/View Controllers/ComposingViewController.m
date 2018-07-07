@@ -12,7 +12,6 @@
 
 @interface ComposingViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UITextView *tweetView;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 @property (weak, nonatomic) IBOutlet UILabel *characterLabel;
@@ -24,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tweetView.delegate = self;
+    self.postButton.layer.cornerRadius = self.postButton.frame.size.height/3;
+    
 }
 
 

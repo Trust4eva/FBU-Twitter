@@ -62,8 +62,6 @@
     [self.ProfilePic setImageWithURL:tweets.user.profilePicURL];
     self.ProfilePic.layer.cornerRadius = self.ProfilePic.frame.size.height/2;
     self.ProfilePic.layer.masksToBounds = YES;
-    
-    
 }
 
 -(void)updateRTorFavLabel {
